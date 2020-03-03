@@ -1,8 +1,8 @@
 package com.learn.nbaplayer.dao.es;
 
 import com.learn.nbaplayer.entity.NbaPlayer;
-import com.learn.nbaplayer.provider.PlayerProvider;
-import org.apache.ibatis.annotations.SelectProvider;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
 import java.util.List;
@@ -13,5 +13,5 @@ import java.util.List;
  */
 public interface PlayerRepository extends ElasticsearchRepository<NbaPlayer,String> {
 
-
+    Page<NbaPlayer> findByCountryOrCountryEn(String country,String countyEn,Pageable pageable);
 }
