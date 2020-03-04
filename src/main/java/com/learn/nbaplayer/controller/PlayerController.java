@@ -1,6 +1,5 @@
 package com.learn.nbaplayer.controller;
 
-import com.github.pagehelper.PageInfo;
 import com.learn.nbaplayer.entity.NbaPlayer;
 import com.learn.nbaplayer.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -4,8 +4,6 @@ import com.learn.nbaplayer.entity.NbaPlayer;
 import com.learn.nbaplayer.dao.es.PlayerRepository;
 import com.learn.nbaplayer.dao.mysql.PlayerMapper;
 import com.learn.nbaplayer.service.PlayerService;
-import org.elasticsearch.common.lucene.search.function.FunctionScoreQuery;
-import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.query.functionscore.FunctionScoreQueryBuilder;
 import org.elasticsearch.index.query.functionscore.ScoreFunctionBuilders;
@@ -15,7 +13,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
-import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -95,9 +92,7 @@ public class PlayerServiceImpl implements PlayerService {
                 ScoreFunctionBuilders.weightFactorFunction(8)));
         FunctionScoreQueryBuilder.FilterFunctionBuilder[] builders = new FunctionScoreQueryBuilder.FilterFunctionBuilder[filterFunctionBuilders.size()];
         filterFunctionBuilders.toArray(builders);
-        FunctionScoreQueryBuilder functionScoreQueryBuilder = QueryBuilders.functionScoreQuery(builders)
-                .scoreMode(FunctionScoreQuery.ScoreMode.SUM)
-                .setMinScore(2);
+        FunctionScoreQueryBuilder functionScoreQueryBuilder = QueryBuilders.functionScoreQuery(builders);
         NativeSearchQueryBuilder builder = new NativeSearchQueryBuilder();
         builder.withQuery(functionScoreQueryBuilder);
         builder.withPageable(pageable);

@@ -4,7 +4,6 @@ import com.learn.nbaplayer.entity.NbaPlayer;
 import org.springframework.data.domain.Page;
 
 import java.util.Iterator;
-import java.util.List;
 
 /**
  * @author chengpengfei

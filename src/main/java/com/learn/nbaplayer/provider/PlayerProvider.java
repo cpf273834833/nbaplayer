@@ -1,6 +1,5 @@
 package com.learn.nbaplayer.provider;
 
-import com.learn.nbaplayer.entity.NbaPlayer;
 import org.apache.ibatis.annotations.Param;
 
 /**
